@@ -2,6 +2,7 @@ package com.example.recyclerview
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -39,5 +40,10 @@ class MainActivity : AppCompatActivity() {
 
         // set Adapter pada RecyclerView
         recyclerView.adapter = adapter
+        adapter.setOnItemClickListener(object : ContactAdapter.onItemClickListener{
+            override fun onItemClick(position: Int) {
+                Toast.makeText(this@MainActivity, "you clicked on item no $position", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 }
