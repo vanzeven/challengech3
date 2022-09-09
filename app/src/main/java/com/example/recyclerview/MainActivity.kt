@@ -11,18 +11,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val listContact = arrayListOf(
-            MyContact("Sabrina", "0812696969"),
-            MyContact("Adi", "0812177013"),
-            MyContact("Budi", "0812215600"),
-            MyContact("Sabrinab", "0812696969"),
-            MyContact("Adib", "0812177013"),
-            MyContact("Budib", "0812215600"),
-            MyContact("Sabrinac", "0812696969"),
-            MyContact("Adic", "0812177013"),
-            MyContact("Budic", "0812215600"),
-            MyContact("Sabrinad", "0812696969"),
-            MyContact("Adid", "0812177013"),
-            MyContact("Budid", "0812215600"),
+            MyContact("A"),
+            MyContact("B"),
+            MyContact("C"),
+            MyContact("D"),
+            MyContact("E"),
+            MyContact("F"),
+            MyContact("G"),
+            MyContact("H"),
+            MyContact("I"),
+            MyContact("J"),
         )
 
         // membuat adapter

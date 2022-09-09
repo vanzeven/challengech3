@@ -12,7 +12,6 @@ class ContactAdapter (private val listContact: ArrayList<MyContact>)
     // class holder
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nama: TextView = itemView.findViewById(R.id.tvNama)
-        val noHp: TextView = itemView.findViewById(R.id.tvNoHp)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -22,8 +21,7 @@ class ContactAdapter (private val listContact: ArrayList<MyContact>)
 
     // melakukan penentuan data yg akan ditampilkan pada tiap baris
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.nama.text = listContact[position].nama
-        holder.noHp.text = listContact[position].noHp
+        holder.nama.text = listContact[position].huruf
     }
 
     override fun getItemCount(): Int {
