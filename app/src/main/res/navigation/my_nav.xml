@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/huruf">
+
+    <fragment
+        android:id="@+id/huruf"
+        android:name="com.example.recyclerview.Huruf"
+        android:label="fragment_huruf"
+        tools:layout="@layout/fragment_huruf">
+        <action
+            android:id="@+id/action_huruf_to_huruf2"
+            app:destination="@id/huruf2" />
+    </fragment>
+    <fragment
+        android:id="@+id/huruf2"
+        android:name="com.example.recyclerview.huruf2"
+        android:label="fragment_huruf2"
+        tools:layout="@layout/fragment_huruf2" />
+</navigation>
