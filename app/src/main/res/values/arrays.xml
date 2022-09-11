@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="huruf">
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+        <item>D</item>
+        <item>E</item>
+        <item>F</item>
+        <item>G</item>
+        <item>H</item>
+        <item>I</item>
+        <item>J</item>
+    </string-array>
+
+    <string-array name="kata">
+        <item>Acropolis</item>
+        <item>Alhambra</item>
+        <item>Atlatlist</item>
+        <item>Batey</item>
+        <item>Berserker</item>
+        <item>Bireme</item>
+        <item>Carolean</item>
+        <item>Cataphract</item>
+        <item>Cothon</item>
+        <item>De Zeven Provincien</item>
+        <item>Djong</item>
+        <item>Dromon</item>
+        <item>Eagle Warrior</item>
+        <item>Eiffel Tower</item>
+        <item>Etemenanki</item>
+        <item>Feitoria</item>
+        <item>Force Publique</item>
+        <item>Foreign Legion</item>
+        <item>Gaesatae</item>
+        <item>Galleon</item>
+        <item>Galley</item>
+        <item>Hetairoi</item>
+        <item>Hypaspist</item>
+        <item>Hwacha</item>
+        <item>Ikanda</item>
+        <item>Iklwa</item>
+        <item>Impi</item>
+        <item>Jaguar warrior</item>
+        <item>Janissary</item>
+        <item>Jebel Barkal</item>
+    </string-array>
+</resources>

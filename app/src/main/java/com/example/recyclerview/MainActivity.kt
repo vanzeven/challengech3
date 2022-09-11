@@ -3,47 +3,37 @@ package com.example.recyclerview
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.recyclerview.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    private val listContact = arrayListOf(
-        MyContact("A", arrayListOf("Acropolis")),
-        MyContact("B", arrayListOf("Batey")),
-        MyContact("C", arrayListOf("Carolean")),
-        MyContact("D", arrayListOf("De Zeven Provincien")),
-        MyContact("E", arrayListOf("Eiffel Tower")),
-        MyContact("F", arrayListOf("Feitoria")),
-        MyContact("G", arrayListOf("Gaesatae")),
-        MyContact("H", arrayListOf("Heitaroi")),
-        MyContact("I", arrayListOf("Ikanda")),
-        MyContact("J", arrayListOf("Jaguar Warrior")),
-    )
+
+    private var _binding: ActivityMainBinding? = null
+    private val binding get() = _binding!!
+
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        _binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        title = "Words"
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_container) as NavHostFragment
+        navController = navHostFragment.navController
 
-        // membuat adapter
-        val adapter = ContactAdapter(listContact)
+        setupActionBarWithNavController(navController)
+    }
 
-        // membuat layout manager
-        val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp() || super.onSupportNavigateUp()
+    }
 
-        // membuat recyclerview
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
-
-        // set LayoutManager pada RecyclervView
-        recyclerView.layoutManager = layoutManager
-
-        // set Adapter pada RecyclerView
-        recyclerView.adapter = adapter
-        adapter.setOnItemClickListener(object : ContactAdapter.onItemClickListener{
-            override fun onItemClick(position: Int) {
-                Toast.makeText(this@MainActivity, "you clicked on item no $position", Toast.LENGTH_SHORT).show()
-            }
-        })
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }

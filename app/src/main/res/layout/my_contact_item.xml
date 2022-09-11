@@ -1,31 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="8dp">
+    android:paddingVertical="5dp"
+    android:paddingHorizontal="25dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.cardview.widget.CardView
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/card_view"
-        android:layout_gravity="center"
+    <Button
+        android:id="@+id/tombol"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        card_view:cardBackgroundColor="#0098a6"
-        card_view:cardCornerRadius="4dp">
+        android:backgroundTint="#0098a6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="huruf"/>
 
-        <TextView
-            android:id="@+id/tvNama"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="kartu"
-            android:layout_marginStart="10dp"
-            android:textSize="26sp"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            tools:ignore="HardcodedText" />
-
-    </androidx.cardview.widget.CardView>
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
