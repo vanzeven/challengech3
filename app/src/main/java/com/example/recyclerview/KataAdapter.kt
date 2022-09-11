@@ -29,13 +29,12 @@ class KataAdapter : RecyclerView.Adapter<KataAdapter.ViewHolder>(){
 
     // melakukan penentuan data yg akan ditampilkan pada tiap baris
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val word = daftarKata[position]
+        val kata = daftarKata[position]
 
         with(holder) {
-            binding.tombol.text = word
-
+            binding.tombol.text = kata
             binding.tombol.setOnClickListener {
-                onItemClickListener.onItemClicked(word)
+                onItemClickListener.onItemClicked(kata)
             }
         }
     }

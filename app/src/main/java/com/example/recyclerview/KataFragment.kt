@@ -33,7 +33,7 @@ class KataFragment : Fragment() {
 
         (activity as AppCompatActivity).supportActionBar?.title = "Kata yang dimulai dengan $huruf"
 
-        val daftarKata = resources.getStringArray(R.array.kata).toList().filter { kata -> kata.startsWith(huruf) }
+        val dataDaftarKata = resources.getStringArray(R.array.kata).toList().filter { kata -> kata.startsWith(huruf) }
 
         val adapter = KataAdapter()
         val layoutManager = LinearLayoutManager(requireContext())
@@ -41,7 +41,7 @@ class KataFragment : Fragment() {
         binding.rvKata.adapter = adapter
         binding.rvKata.layoutManager = layoutManager
 
-        adapter.submitData(daftarKata)
+        adapter.submitData(dataDaftarKata)
         adapter.setOnItemClickListener(object : OnItemClickListener {
             override fun onItemClicked(data: String) {
                 openWebPage(data)
