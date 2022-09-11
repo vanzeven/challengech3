@@ -5,18 +5,12 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.commit
-import androidx.navigation.NavController
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.recyclerview.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), OnDataPass{
 
     private var _binding: ActivityMainBinding? = null
     private val binding get() = _binding!!
@@ -26,11 +20,11 @@ class MainActivity : AppCompatActivity() {
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val letterFragment = KataFragment()
+        val hurufFragment = HurufFragment()
         val fragmentManager = supportFragmentManager
 
         fragmentManager.commit {
-            add(R.id.nav_host_fragment_container, letterFragment)
+            add(R.id.nav_host_fragment_container, hurufFragment)
         }
 
     }
@@ -40,12 +34,12 @@ class MainActivity : AppCompatActivity() {
         _binding = null
     }
 
-    fun onDataPass(letter: String) {
+    override fun onDataPass(huruf: String) {
 
         val wordFragment = KataFragment()
 
         val bundle = Bundle()
-        bundle.putString("letter", letter)
+        bundle.putString("huruf", huruf)
 
         wordFragment.arguments = bundle
         val fragmentManager = supportFragmentManager
