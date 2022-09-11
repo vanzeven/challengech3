@@ -1,5 +1,6 @@
 package com.example.recyclerview
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,6 +13,13 @@ import com.example.recyclerview.databinding.FragmentHurufBinding
 class HurufFragment : Fragment() {
     private var _binding: FragmentHurufBinding? = null
     private val binding get() = _binding!!
+
+    private lateinit var onDataPass: OnDataPass
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        onDataPass = context as OnDataPass
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,8 +54,7 @@ class HurufFragment : Fragment() {
 
         adapter.setOnItemClickListener(object : OnItemClickListener{
             override fun onItemClicked(data: String) {
-                val action = HurufFragmentDirections.actionHurufToKata(data)
-                findNavController().navigate(action)
+                onDataPass.onDataPass(data)
             }
         })
     }

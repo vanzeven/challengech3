@@ -7,15 +7,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.navArgs
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.recyclerview.databinding.FragmentKataBinding
 
 class KataFragment : Fragment() {
     private var _binding: FragmentKataBinding? = null
     private val binding get() = _binding!!
-
-    private val args: KataFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,18 +26,14 @@ class KataFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as MainActivity).showUpButton()
+        (activity as MainActivity).clickUpButton()
 
-        setRecyclerView()
-    }
+        val huruf = arguments?.getString("huruf")!!
 
-    private fun setRecyclerView() {
-        val huruf = args.huruf
-        val dataDaftarKata = resources.getStringArray(R.array.kata).toList().filter { kata -> kata.startsWith(huruf) }
-        val daftarKata = ArrayList<MyContact>()
+        (activity as AppCompatActivity).supportActionBar?.title = "Kata yang dimulai dengan $huruf"
 
-        for (element in dataDaftarKata) {
-            daftarKata.add(MyContact(kata = element))
-        }
+        val daftarKata = resources.getStringArray(R.array.kata).toList().filter { kata -> kata.startsWith(huruf) }
 
         val adapter = KataAdapter()
         val layoutManager = LinearLayoutManager(requireContext())

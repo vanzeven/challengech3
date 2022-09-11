@@ -28,10 +28,10 @@ class KataAdapter : RecyclerView.Adapter<KataAdapter.ViewHolder>(){
         }
     }
 
-    private val differ = AsyncListDiffer(this, diffCallback)
+    private val daftarKata = ArrayList<String>()
 
-    fun submitData(list: ArrayList<MyContact>) {
-        differ.submitList(list)
+    fun submitData(list: List<String>) {
+        daftarKata.addAll(list)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -41,15 +41,16 @@ class KataAdapter : RecyclerView.Adapter<KataAdapter.ViewHolder>(){
 
     // melakukan penentuan data yg akan ditampilkan pada tiap baris
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val word = daftarKata[position]
+
         with(holder) {
-            with(differ.currentList[position]) {
-                binding.tombol.text = kata
-                binding.tombol.setOnClickListener {
-                    onItemClickListener.onItemClicked(binding.tombol.text.toString())
-                }
+            binding.tombol.text = word
+
+            binding.tombol.setOnClickListener {
+                onItemClickListener.onItemClicked(word)
             }
         }
     }
 
-    override fun getItemCount(): Int = differ.currentList.size
+    override fun getItemCount(): Int = daftarKata.size
 }
