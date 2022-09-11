@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
-    val listContact = arrayListOf(
+    private val listContact = arrayListOf(
         MyContact("A", arrayListOf("Acropolis")),
         MyContact("B", arrayListOf("Batey")),
         MyContact("C", arrayListOf("Carolean")),

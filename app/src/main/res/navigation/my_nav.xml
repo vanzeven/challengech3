@@ -11,12 +11,11 @@
         android:label="fragment_huruf"
         tools:layout="@layout/fragment_huruf">
         <action
-            android:id="@+id/action_huruf_to_huruf2"
-            app:destination="@id/huruf2" />
+            android:id="@+id/action_huruf_to_kata"
+            app:destination="@id/kata" />
     </fragment>
     <fragment
-        android:id="@+id/huruf2"
-        android:name="com.example.recyclerview.huruf2"
-        android:label="fragment_huruf2"
-        tools:layout="@layout/fragment_huruf2" />
+        android:id="@+id/kata"
+        android:name="com.example.recyclerview.Kata"
+        android:label="Kata" />
 </navigation>

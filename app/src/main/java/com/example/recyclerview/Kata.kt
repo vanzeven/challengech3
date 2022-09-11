@@ -13,10 +13,10 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [huruf2.newInstance] factory method to
+ * Use the [Kata.newInstance] factory method to
  * create an instance of this fragment.
  */
-class huruf2 : Fragment() {
+class Kata : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -34,7 +34,7 @@ class huruf2 : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_huruf2, container, false)
+        return inflater.inflate(R.layout.fragment_kata, container, false)
     }
 
     companion object {
@@ -49,7 +49,7 @@ class huruf2 : Fragment() {
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            huruf2().apply {
+            Kata().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
