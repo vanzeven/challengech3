@@ -7,24 +7,24 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
+    val listContact = arrayListOf(
+        MyContact("A", arrayListOf("Acropolis")),
+        MyContact("B", arrayListOf("Batey")),
+        MyContact("C", arrayListOf("Carolean")),
+        MyContact("D", arrayListOf("De Zeven Provincien")),
+        MyContact("E", arrayListOf("Eiffel Tower")),
+        MyContact("F", arrayListOf("Feitoria")),
+        MyContact("G", arrayListOf("Gaesatae")),
+        MyContact("H", arrayListOf("Heitaroi")),
+        MyContact("I", arrayListOf("Ikanda")),
+        MyContact("J", arrayListOf("Jaguar Warrior")),
+    )
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         title = "Words"
-
-        val listContact = arrayListOf(
-            MyContact("A"),
-            MyContact("B"),
-            MyContact("C"),
-            MyContact("D"),
-            MyContact("E"),
-            MyContact("F"),
-            MyContact("G"),
-            MyContact("H"),
-            MyContact("I"),
-            MyContact("J"),
-        )
 
         // membuat adapter
         val adapter = ContactAdapter(listContact)
