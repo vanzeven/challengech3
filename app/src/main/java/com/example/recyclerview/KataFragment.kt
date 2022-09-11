@@ -55,8 +55,8 @@ class KataFragment : Fragment() {
         })
     }
 
-    fun openWebPage(word: String) {
-        val url = "https://www.google.com/search?q=$word"
+    fun openWebPage(kata: String) {
+        val url = "https://www.google.com/search?q=$kata"
         val webPage: Uri = Uri.parse(url)
         val intent = Intent(Intent.ACTION_VIEW, webPage)
         startActivity(intent)

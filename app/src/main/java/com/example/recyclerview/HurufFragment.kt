@@ -47,7 +47,7 @@ class HurufFragment : Fragment() {
         adapter.setOnItemClickListener(object : OnItemClickListener{
             override fun onItemClicked(data: String) {
                 val action = HurufFragmentDirections.actionHurufToKata(data)
-                findNavController().navigate(action)
+                findNavController().navigate(directions = action)
             }
         })
     }
