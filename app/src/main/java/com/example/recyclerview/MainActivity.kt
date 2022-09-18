@@ -6,6 +6,7 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import androidx.core.view.MenuProvider
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.commit
 import com.example.recyclerview.databinding.ActivityMainBinding
@@ -32,6 +33,14 @@ class MainActivity : AppCompatActivity(), OnDataPass{
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    fun gotToNextFragment(fragment: Fragment) {
+        val fragmentManager = supportFragmentManager
+        fragmentManager.commit {
+            addToBackStack(null)
+            replace(R.id.nav_host_fragment_container, fragment)
+        }
     }
 
     override fun onDataPass(huruf: String) {

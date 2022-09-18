@@ -2,11 +2,12 @@ package com.example.recyclerview
 
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.recyclerview.databinding.FragmentHurufBinding
 
@@ -15,6 +16,7 @@ class HurufFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var onDataPass: OnDataPass
+    private val viewModel: HurufViewmodel by activityViewModels()
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -35,7 +37,22 @@ class HurufFragment : Fragment() {
         (activity as AppCompatActivity).supportActionBar?.title = "Huruf"
         (activity as MainActivity).hideUpButton()
 
-        setRecyclerView()
+        klikCari()
+    }
+
+    private fun klikCari() {
+        binding.tombolCari.setOnClickListener {
+            var huruf = binding.etHuruf.text.toString()
+            if (huruf.isEmpty()) {
+                huruf = ""
+                viewModel.getHuruf(huruf)
+            } else {
+                viewModel.getHuruf(huruf)
+            }
+            val activity = (activity as MainActivity)
+            val destination = KataFragment()
+            activity.gotToNextFragment(destination)
+        }
     }
 
     private fun setRecyclerView() {
@@ -49,8 +66,8 @@ class HurufFragment : Fragment() {
         val adapter = HurufAdapter()
         val layoutManager = LinearLayoutManager(requireContext())
 
-        binding.rvHuruf.adapter = adapter
-        binding.rvHuruf.layoutManager = layoutManager
+//        binding.rvHuruf.adapter = adapter
+//        binding.rvHuruf.layoutManager = layoutManager
 
         adapter.submitData(daftarHuruf)
 

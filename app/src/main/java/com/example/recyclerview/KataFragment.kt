@@ -8,12 +8,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.recyclerview.databinding.FragmentKataBinding
 
 class KataFragment : Fragment() {
     private var _binding: FragmentKataBinding? = null
     private val binding get() = _binding!!
+
+    private val viewModel: HurufViewmodel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,8 +31,6 @@ class KataFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         (activity as MainActivity).showUpButton()
         (activity as MainActivity).clickUpButton()
-
-        val huruf = arguments?.getString("huruf")!!
 
         (activity as AppCompatActivity).supportActionBar?.title = "Kata yang dimulai dengan $huruf"
 
