@@ -32,17 +32,24 @@ class KataFragment : Fragment() {
         (activity as MainActivity).showUpButton()
         (activity as MainActivity).clickUpButton()
 
-        (activity as AppCompatActivity).supportActionBar?.title = "Kata yang dimulai dengan $huruf"
-
-        val dataDaftarKata = resources.getStringArray(R.array.kata).toList().filter { kata -> kata.startsWith(huruf) }
-
         val adapter = KataAdapter()
         val layoutManager = LinearLayoutManager(requireContext())
 
         binding.rvKata.adapter = adapter
         binding.rvKata.layoutManager = layoutManager
 
-        adapter.submitData(dataDaftarKata)
+        viewModel.huruf.observe(viewLifecycleOwner) {huruf ->
+            if (huruf != "") {
+                (activity as AppCompatActivity).supportActionBar?.title =
+                    "Kata yang dimulai dengan $huruf"
+            } else {
+                (activity as AppCompatActivity).supportActionBar?.title =
+                    "Semua kata"
+            }
+            val daftarKata = resources.getStringArray(R.array.kata).toList().filter {kata -> kata.startsWith(huruf, ignoreCase = true)}
+            adapter.submitData(daftarKata)
+        }
+
         adapter.setOnItemClickListener(object : OnItemClickListener {
             override fun onItemClicked(data: String) {
                 openWebPage(data)

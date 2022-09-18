@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.recyclerview.databinding.FragmentHurufBinding
+import java.util.*
 
 class HurufFragment : Fragment() {
     private var _binding: FragmentHurufBinding? = null
@@ -42,10 +42,9 @@ class HurufFragment : Fragment() {
 
     private fun klikCari() {
         binding.tombolCari.setOnClickListener {
-            var huruf = binding.etHuruf.text.toString()
+            val huruf = binding.etHuruf.text.toString().uppercase(Locale.getDefault())
             if (huruf.isEmpty()) {
-                huruf = ""
-                viewModel.getHuruf(huruf)
+                viewModel.getHuruf("")
             } else {
                 viewModel.getHuruf(huruf)
             }
@@ -55,28 +54,28 @@ class HurufFragment : Fragment() {
         }
     }
 
-    private fun setRecyclerView() {
-        val dataDaftarHuruf = resources.getStringArray(R.array.huruf)
-        val daftarHuruf = ArrayList<MyContact>()
-
-        for (element in dataDaftarHuruf) {
-            daftarHuruf.add(MyContact(huruf = element))
-        }
-
-        val adapter = HurufAdapter()
-        val layoutManager = LinearLayoutManager(requireContext())
-
-//        binding.rvHuruf.adapter = adapter
-//        binding.rvHuruf.layoutManager = layoutManager
-
-        adapter.submitData(daftarHuruf)
-
-        adapter.setOnItemClickListener(object : OnItemClickListener{
-            override fun onItemClicked(data: String) {
-                onDataPass.onDataPass(data)
-            }
-        })
-    }
+//    private fun setRecyclerView() {
+//        val dataDaftarHuruf = resources.getStringArray(R.array.huruf)
+//        val daftarHuruf = ArrayList<MyContact>()
+//
+//        for (element in dataDaftarHuruf) {
+//            daftarHuruf.add(MyContact(huruf = element))
+//        }
+//
+//        val adapter = HurufAdapter()
+//        val layoutManager = LinearLayoutManager(requireContext())
+//
+////        binding.rvHuruf.adapter = adapter
+////        binding.rvHuruf.layoutManager = layoutManager
+//
+//        adapter.submitData(daftarHuruf)
+//
+//        adapter.setOnItemClickListener(object : OnItemClickListener{
+//            override fun onItemClicked(data: String) {
+//                onDataPass.onDataPass(data)
+//            }
+//        })
+//    }
 
     override fun onDestroyView() {
         super.onDestroyView()
